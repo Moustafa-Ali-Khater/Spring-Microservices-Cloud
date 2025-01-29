@@ -1,0 +1,5 @@
+http://localhost:8080/players-management/statistics
+http://localhost:9090/players-statistics/v01
+http://localhost:8888/football-players/buy/ff/player/jj
+http://localhost:9999/team-players/team/mm/player/oo
+http://localhost:9999/team-players/teamNew/mm/player/oo
