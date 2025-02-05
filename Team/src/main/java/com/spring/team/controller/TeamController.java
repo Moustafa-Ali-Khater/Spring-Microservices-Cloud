@@ -1,6 +1,6 @@
 package com.spring.team.controller;
 
-import com.spring.team.config.ApiCalls;
+import com.spring.team.config.Proxy;
 import com.spring.team.model.Team;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -18,7 +18,7 @@ import java.util.Map;
 public class TeamController {
 
     @Autowired
-    private ApiCalls apiCalls;
+    private Proxy proxy;
 
     @GetMapping("/team/{from}/player/{to}")
     public Team teamWithPlayer(@PathVariable String from, @PathVariable String to) {
@@ -30,14 +30,28 @@ public class TeamController {
                 Team.class,
                 urlAttribute);
         Team teamResponse = teamResponseEntity.getBody();
+//        Team team = new Team(teamResponse.getId(), teamResponse.getFrom(), teamResponse.getTo(), teamResponse.getMoneyTeam(), "NONE", "7");
         Team team = new Team(teamResponse.getId(), teamResponse.getFrom(), teamResponse.getTo(), teamResponse.getMoneyTeam(), "NONE", "7");
+        team.setPort(teamResponse.getPort());
         return team;
     }
 
-    @GetMapping("/teamNew/{from}/player/{to}")
-    public Team teamWithPlayerNew(@PathVariable String from, @PathVariable String to) {
-        Team teamResponse = apiCalls.getFootballPlayer(from, to);
-        Team team = new Team(teamResponse.getId(), teamResponse.getFrom(), teamResponse.getTo(), teamResponse.getMoneyTeam(), "Hallo", "7");
-        return team;
+//    @GetMapping("/teamProxy/{from}/player/{to}")
+//    public Team teamWithPlayerProxy(@PathVariable String from, @PathVariable String to) {
+//        Team teamResponse = proxy.getFootballPlayer(from, to);
+////        Team team = new Team(teamResponse.getId(), teamResponse.getFrom(), teamResponse.getTo(), teamResponse.getMoneyTeam(), "Hallo", "7");
+////        Team team = new Team(teamResponse.getId(), teamResponse.getFrom(), teamResponse.getTo(), teamResponse.getMoneyTeam(), "Hallo", "7", teamResponse.getPort());
+//        teamResponse.setNote("Ya");
+//        teamResponse.setNumberTeam("30");
+//        return teamResponse;
+//    }
+
+    @GetMapping("/teamProxy/{from}/player/{to}")
+    public Team teamWithPlayerNew(@PathVariable String from,@PathVariable String to){
+        Team teamResponse = proxy.getFootballPlayer(from,to);
+        teamResponse.setNote("No");
+        teamResponse.setNumberTeam("20");
+        //Team team = new Team(teamResponse.getId(),teamResponse.getFrom(),teamResponse.getTo(),teamResponse.getMoneyTeam(),"NONE","50");
+        return teamResponse;
     }
 }

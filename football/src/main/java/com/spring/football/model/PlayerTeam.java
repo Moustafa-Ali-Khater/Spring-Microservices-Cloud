@@ -15,8 +15,19 @@ public class PlayerTeam {
     private  String to;
     private  int moneyPlayer;
     private  int moneyTeam;
+    private String name;
+    @Transient
+    private String port;
 
     public PlayerTeam() {
+    }
+
+    public PlayerTeam(long id, String from, String to, int moneyPlayer, int moneyTeam) {
+        this.id = id;
+        this.from = from;
+        this.to = to;
+        this.moneyPlayer = moneyPlayer;
+        this.moneyTeam = moneyTeam;
     }
 
     public String getFrom() {
@@ -33,14 +44,6 @@ public class PlayerTeam {
 
     public void setTo(String to) {
         this.to = to;
-    }
-
-    public PlayerTeam(long id, String from, String to, int moneyPlayer, int moneyTeam) {
-        this.id = id;
-        this.from = from;
-        this.to = to;
-        this.moneyPlayer = moneyPlayer;
-        this.moneyTeam = moneyTeam;
     }
 
     public long getId() {
@@ -65,5 +68,21 @@ public class PlayerTeam {
 
     public void setMoneyTeam(int moneyTeam) {
         this.moneyTeam = moneyTeam;
+    }
+
+//    public String getName() {
+//        return name;
+//    }
+//
+//    public void setName(String name) {
+//        this.name = name;
+//    }
+
+    public String getPort() {
+        return port;
+    }
+
+    public void setPort(String port) {
+        this.port = port;
     }
 }

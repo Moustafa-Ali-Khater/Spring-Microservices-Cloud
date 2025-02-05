@@ -8,6 +8,7 @@ public class Team {
     private  int moneyTeam;
     private  String note;
     private  String numberTeam;
+    private String port;
 
     public Team() {
     }
@@ -19,6 +20,16 @@ public class Team {
         this.moneyTeam = moneyTeam;
         this.note = note;
         this.numberTeam = numberTeam;
+    }
+
+    public Team(long id, String from, String to, int moneyTeam, String note, String numberTeam, String port) {
+        this.id = id;
+        this.from = from;
+        this.to = to;
+        this.moneyTeam = moneyTeam;
+        this.note = note;
+        this.numberTeam = numberTeam;
+        this.port = port;
     }
 
     public long getId() {
@@ -67,5 +78,13 @@ public class Team {
 
     public void setNumberTeam(String numberTeam) {
         this.numberTeam = numberTeam;
+    }
+
+    public String getPort() {
+        return port;
+    }
+
+    public void setPort(String port) {
+        this.port = port;
     }
 }
